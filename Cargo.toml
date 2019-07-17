@@ -1,0 +1,17 @@
+[package]
+name = "sticker-python"
+version = "0.1.0"
+authors = ["Daniël de Kok <me@danieldk.eu>"]
+edition = "2018"
+description = "Sticker Python module"
+license = "BlueOak-1.0.0"
+
+[lib]
+name = "sticker"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.7"
+features = ["extension-module"]
+
+[dependencies]
