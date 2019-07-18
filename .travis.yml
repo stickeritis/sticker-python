@@ -1,0 +1,44 @@
+language: rust
+dist: xenial
+
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.5-dev
+      - python3.6-dev
+      - python3.6-venv
+      - python3.7-dev
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      rust: nightly-2019-05-04
+    - os: osx
+      osx_image: xcode10.1
+      rust: nightly-2019-05-04
+
+install:
+  - |
+    if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      python3 -m venv venv
+      source venv/bin/activate
+      pip install cffi virtualenv pytest
+    fi
+  - |
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      python3.6 -m venv venv
+      source venv/bin/activate
+      pip install cffi virtualenv pytest
+    fi
+  - cargo install pyo3-pack --vers 0.6.1
+  - rustup default nightly-2019-05-04
+  - rustup component add rustfmt
+
+script:
+  - cargo fmt --all -- --check
+  - pyo3-pack develop
+  - pytest
+  - pyo3-pack build --release
