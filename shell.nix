@@ -23,6 +23,7 @@ in stdenv.mkDerivation rec {
     latest.rustChannels.nightly.rust
     pyo3-pack
     python3
+    python3Packages.pytest
   ];
 
   buildInputs = [
