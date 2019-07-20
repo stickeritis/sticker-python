@@ -41,4 +41,3 @@ script:
   - cargo fmt --all -- --check
   - pyo3-pack develop
   - pytest
-  - pyo3-pack build --release
