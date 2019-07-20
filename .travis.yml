@@ -21,23 +21,28 @@ matrix:
       rust: nightly-2019-05-04
 
 install:
+  - mkdir libtensorflow
   - |
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       python3 -m venv venv
       source venv/bin/activate
       pip install cffi virtualenv pytest
+      tf_build="darwin-x86_64"
     fi
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       python3.6 -m venv venv
       source venv/bin/activate
       pip install cffi virtualenv pytest
+      tf_build="linux-x86_64"
     fi
+  - curl -L "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-${tf_build}-1.14.0.tar.gz" | sudo tar -C /usr/local -zx
   - cargo install pyo3-pack --vers 0.6.1
   - rustup default nightly-2019-05-04
   - rustup component add rustfmt
 
 script:
+  - |
   - cargo fmt --all -- --check
   - pyo3-pack develop
   - pytest
