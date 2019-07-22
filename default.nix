@@ -15,6 +15,7 @@
 }:
 
 let
+  libtensorflow_1_14_0 = callPackage ./nix/libtensorflow.nix {};
   rustPlatform = callPackage ./nix/rust-nightly.nix {};
 in rustPlatform.buildRustPackage rec {
   pname = "sticker";
@@ -25,7 +26,7 @@ in rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkgconfig pyo3-pack ];
 
-  buildInputs = [ libtensorflow openssl python3 ];
+  buildInputs = [ libtensorflow_1_14_0 openssl python3 ];
 
   installCheckInputs = [ python3Packages.pytest ];
 
