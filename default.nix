@@ -15,7 +15,7 @@
 }:
 
 let
-  libtensorflow_1_14_0 = callPackage ./nix/libtensorflow.nix {};
+  libtensorflow_1_14_0 = (callPackage ./nix/danieldk.nix {}).libtensorflow_1_14_0;
   rustPlatform = callPackage ./nix/rust-nightly.nix {};
 in rustPlatform.buildRustPackage rec {
   pname = "sticker";
