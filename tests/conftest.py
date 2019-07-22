@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from sticker import Config, Tagger
 
@@ -17,3 +19,7 @@ def pytest_generate_tests(metafunc):
 def tagger_model(tagger_model_file):
     config = Config(tagger_model_file)
     yield Tagger(config)
+
+@pytest.fixture
+def tests_root():
+    yield os.path.dirname(__file__)
