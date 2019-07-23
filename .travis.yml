@@ -1,5 +1,20 @@
 language: nix
 nix: 2.2.2
+env:
+  global:
+    secure: apQ7Q628bsZkTS0fSk4rd+JvqgVCIA2gw8xxuzb2ZWTybjt9wPrwXstseKmcXAa15LPG9ns9AmsKW/nJFb0ZTWtFSb7Z4CuRRrBxl7osumLhciTFOc5naPbcMc3WXVgFBugzdYeVbCWl1X3t/xmCgfoeKv972kjxpS/a49rzrIxmezhQjKlZzkf+QwRVPJMlwTy6BOXPRki5ubpYTvM0J+w4fJdmDjv8/Tm5FPrYM9yw+jLz7jJaEl3JUtzpV0bZWkyxmVQ2SQnfF3ja1p2uTOqdC90QwO2K2zZlUQ31i6kyKVcYrNFIcRpbh814Fdv7zFX1aSP1dP6fOq4y3xUxsuX1YXtnL878+NC5O78m6+KzQfJcHAzPF7rYN5JlrzEBKmcQQg3nq1VbJAh11qFnrM2ApZHx860inWI4+IjiowsmkxQOvey9qRlwBV2TtHnMg5TtxHflVv5ccBqGEtzpjqteUgFDh+iNrmqMYvsFiafoSR2UEEPDvW7SVHvfIIqef8RBE4UFA8jbBYCtGuFUfqPy/iqBoFEMmLblspAsfrV+NmR4YwnJJojE3uvtUB6AJzRupWW/WIk10wNnZT/d5qZD4HndD1gKd4McEBOFnmKc1bJRV5GGoZtbOSmx04KrBXrqdZD1ZmvKU2ZFVPOeWpYTdUdHYJOIYDd1m90DdiY=
 before_script:
-  - sudo mkdir /etc/nix && echo 'sandbox = true' | sudo tee /etc/nix/nix.conf
-script: nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/31a6c5a7b507847221598b0d14dd41e935afea4e.tar.gz --expr 'with import <nixpkgs> {}; callPackage ./default.nix { releaseBuild = false; }'
+- sudo mkdir /etc/nix && echo 'sandbox = true' | sudo tee /etc/nix/nix.conf
+- echo "binary-caches = https://cache.nixos.org https://danieldk-ci.cachix.org" |
+  sudo tee -a /etc/nix/nix.conf > /dev/null
+- echo "binary-cache-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+  danieldk-ci.cachix.org-1:OeS8qTw4e0+CVVAvcBTAjccsthUGhnnX+nh5ZuUe35A=" | sudo tee
+  -a /etc/nix/nix.conf > /dev/null
+- nix-env -iA cachix -f https://cachix.org/api/v1/install
+- cachix use danieldk-ci
+- if [ -n "$CACHIX_SIGNING_KEY" ]; then cachix push danieldk-ci --watch-store; fi
+  &
+script:
+- nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/31a6c5a7b507847221598b0d14dd41e935afea4e.tar.gz
+  --expr 'with import <nixpkgs> {}; callPackage ./default.nix { releaseBuild = false; }'
+- sleep 10 # Allow cachix to finish
