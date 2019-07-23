@@ -20,7 +20,7 @@ pub struct PyTagger {
 impl PyTagger {
     #[new]
     fn __new__(obj: &PyRawObject, config: &PyConfig) -> PyResult<()> {
-        let tagger = TaggerWrapper::new(&config)
+        let tagger = TaggerWrapper::new(&*config.as_ref())
             .map_err(|err| exceptions::IOError::py_err(err.to_string()))?;
 
         obj.init(PyTagger { inner: tagger });
