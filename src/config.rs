@@ -1,7 +1,9 @@
+use std::cell::{Ref, RefCell};
 use std::fs::File;
 use std::io::BufReader;
-use std::ops::Deref;
+use std::rc::Rc;
 
+use pyo3::class::basic::PyObjectProtocol;
 use pyo3::exceptions;
 use pyo3::prelude::*;
 
@@ -13,7 +15,13 @@ use sticker_utils::{Config, TomlRead};
 /// Tagger configuration.
 #[pyclass(name=Config)]
 pub struct PyConfig {
-    inner: Config,
+    inner: Rc<RefCell<Config>>,
+}
+
+impl PyConfig {
+    pub fn as_ref(&self) -> Ref<Config> {
+        self.inner.borrow()
+    }
 }
 
 #[pymethods]
@@ -37,16 +45,82 @@ impl PyConfig {
             exceptions::IOError::py_err(format!("cannot relativize paths: {}", err.to_string()))
         })?;
 
-        obj.init(PyConfig { inner: config });
+        obj.init(PyConfig {
+            inner: Rc::new(RefCell::new(config)),
+        });
 
         Ok(())
     }
+
+    #[getter]
+    fn get_model(&self) -> PyModel {
+        PyModel {
+            config: self.inner.clone(),
+        }
+    }
 }
 
-impl Deref for PyConfig {
-    type Target = Config;
+#[pyclass(name=Model)]
+pub struct PyModel {
+    config: Rc<RefCell<Config>>,
+}
 
-    fn deref(&self) -> &Self::Target {
-        &self.inner
+#[pymethods]
+impl PyModel {
+    #[getter]
+    fn get_batch_size(&self) -> usize {
+        self.config.borrow().model.batch_size
+    }
+
+    #[getter]
+    fn get_graph(&self) -> String {
+        self.config.borrow().model.graph.to_owned()
+    }
+
+    #[getter]
+    fn get_inter_op_parallelism_threads(&self) -> usize {
+        self.config.borrow().model.inter_op_parallelism_threads
+    }
+
+    #[getter]
+    fn get_intra_op_parallelism_threads(&self) -> usize {
+        self.config.borrow().model.intra_op_parallelism_threads
+    }
+
+    #[getter]
+    fn get_parameters(&self) -> String {
+        self.config.borrow().model.parameters.to_owned()
+    }
+
+    #[setter]
+    fn set_batch_size(&self, batch_size: usize) {
+        self.config.borrow_mut().model.batch_size = batch_size
+    }
+
+    #[setter]
+    fn set_graph(&self, graph: &str) {
+        self.config.borrow_mut().model.graph = graph.to_owned()
+    }
+
+    #[setter]
+    fn set_inter_op_parallelism_threads(&self, threads: usize) {
+        self.config.borrow_mut().model.inter_op_parallelism_threads = threads
+    }
+
+    #[setter]
+    fn set_intra_op_parallelism_threads(&self, threads: usize) {
+        self.config.borrow_mut().model.intra_op_parallelism_threads = threads
+    }
+
+    #[setter]
+    fn set_parameters(&self, parameters: &str) {
+        self.config.borrow_mut().model.parameters = parameters.to_owned()
+    }
+}
+
+#[pyproto]
+impl PyObjectProtocol for PyModel {
+    fn __repr__(&self) -> PyResult<String> {
+        Ok(format!("{:?}", self.config.borrow()))
     }
 }
