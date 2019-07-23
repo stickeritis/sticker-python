@@ -121,6 +121,6 @@ impl PyModel {
 #[pyproto]
 impl PyObjectProtocol for PyModel {
     fn __repr__(&self) -> PyResult<String> {
-        Ok(format!("{:?}", self.config.borrow()))
+        Ok(format!("{:?}", self.config.borrow().model))
     }
 }
