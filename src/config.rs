@@ -53,6 +53,13 @@ impl PyConfig {
     }
 
     #[getter]
+    fn get_labeler(&self) -> PyLabeler {
+        PyLabeler {
+            config: self.inner.clone(),
+        }
+    }
+
+    #[getter]
     fn get_model(&self) -> PyModel {
         PyModel {
             config: self.inner.clone(),
@@ -122,5 +129,40 @@ impl PyModel {
 impl PyObjectProtocol for PyModel {
     fn __repr__(&self) -> PyResult<String> {
         Ok(format!("{:?}", self.config.borrow().model))
+    }
+}
+
+#[pyclass(name=Labeler)]
+pub struct PyLabeler {
+    config: Rc<RefCell<Config>>,
+}
+
+#[pymethods]
+impl PyLabeler {
+    #[getter]
+    fn get_labels(&self) -> String {
+        self.config.borrow().labeler.labels.clone()
+    }
+
+    #[getter]
+    fn get_read_ahead(&self) -> usize {
+        self.config.borrow().labeler.read_ahead
+    }
+
+    #[setter]
+    fn set_labels(&self, labels: &str) {
+        self.config.borrow_mut().labeler.labels = labels.to_owned()
+    }
+
+    #[setter]
+    fn set_read_ahead(&self, read_ahead: usize) {
+        self.config.borrow_mut().labeler.read_ahead = read_ahead
+    }
+}
+
+#[pyproto]
+impl PyObjectProtocol for PyLabeler {
+    fn __repr__(&self) -> PyResult<String> {
+        Ok(format!("{:?}", self.config.borrow().labeler))
     }
 }

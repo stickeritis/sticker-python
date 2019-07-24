@@ -4,7 +4,7 @@ mod util;
 pub use util::ListVec;
 
 mod config;
-use config::{PyConfig, PyModel};
+use config::{PyConfig, PyLabeler, PyModel};
 
 mod tagger;
 use tagger::PyTagger;
@@ -16,6 +16,7 @@ pub use sentence::{PySentence, PyToken};
 #[pymodule]
 fn sticker(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyConfig>()?;
+    m.add_class::<PyLabeler>()?;
     m.add_class::<PyModel>()?;
     m.add_class::<PyTagger>()?;
     m.add_class::<PySentence>()?;
