@@ -14,6 +14,18 @@ def test_missing_config(tests_root):
     with pytest.raises(IOError):
         Config(os.path.join(tests_root, "nonexistant.conf"))
 
+def test_labeler(tests_root):
+    config = Config(os.path.join(tests_root, "sticker.conf"))
+
+    assert config.labeler.labels.endswith("sticker.labels")
+    assert config.labeler.read_ahead == 10
+
+    config.labeler.labels = "another.labels"
+    config.labeler.read_ahead = 10
+
+    assert config.labeler.labels == "another.labels"
+    assert config.labeler.read_ahead == 10
+
 
 def test_model(tests_root):
     config = Config(os.path.join(tests_root, "sticker.conf"))
