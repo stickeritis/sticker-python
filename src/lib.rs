@@ -10,7 +10,7 @@ mod tagger;
 use tagger::PyTagger;
 
 mod sentence;
-pub use sentence::{PySentence, PyToken};
+pub use sentence::{PySentence, PySentenceIterator, PyToken};
 
 /// This is a Python module for wrapping the sticker sequence labeler.
 #[pymodule]
@@ -20,6 +20,7 @@ fn sticker(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyModel>()?;
     m.add_class::<PyTagger>()?;
     m.add_class::<PySentence>()?;
+    m.add_class::<PySentenceIterator>()?;
     m.add_class::<PyToken>()?;
 
     Ok(())

@@ -4,6 +4,7 @@ use std::rc::Rc;
 use conllx::graph::{Node, Sentence};
 use conllx::token::{Token, TokenBuilder};
 use pyo3::class::basic::PyObjectProtocol;
+use pyo3::class::iter::PyIterProtocol;
 use pyo3::class::sequence::PySequenceProtocol;
 use pyo3::exceptions;
 use pyo3::prelude::*;
@@ -68,6 +69,16 @@ impl PySentence {
 }
 
 #[pyproto]
+impl PyIterProtocol for PySentence {
+    fn __iter__(slf: PyRefMut<Self>) -> PyResult<PySentenceIterator> {
+        Ok(PySentenceIterator {
+            sent: slf.inner.clone(),
+            idx: 0,
+        })
+    }
+}
+
+#[pyproto]
 impl PyObjectProtocol for PySentence {
     fn __repr__(&self) -> PyResult<String> {
         let token_reprs = (0..self.inner.borrow().len())
@@ -102,6 +113,39 @@ impl PySequenceProtocol for PySentence {
                 sent: self.inner.clone(),
                 token_idx: idx as usize,
             })
+        }
+    }
+}
+
+/// Iterator over the nodes in a dependency graph.
+///
+/// The nodes are returned in sentence-linear order.
+#[pyclass(name=SentenceIterator)]
+pub struct PySentenceIterator {
+    sent: Rc<RefCell<Sentence>>,
+    idx: usize,
+}
+
+#[pyproto]
+impl PyIterProtocol for PySentenceIterator {
+    fn __iter__(slf: PyRefMut<Self>) -> PyResult<Py<PySentenceIterator>> {
+        Ok(slf.into())
+    }
+
+    fn __next__(mut slf: PyRefMut<Self>) -> PyResult<Option<PyToken>> {
+        let slf = &mut *slf;
+
+        if slf.idx < slf.sent.borrow().len() {
+            let token = PyToken {
+                sent: slf.sent.clone(),
+                token_idx: slf.idx,
+            };
+
+            slf.idx += 1;
+
+            Ok(Some(token))
+        } else {
+            Ok(None)
         }
     }
 }
