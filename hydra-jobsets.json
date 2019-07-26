@@ -1,0 +1,16 @@
+{
+    "enabled": 1,
+    "hidden": false,
+    "description": "Jobsets",
+    "nixexprinput": "src",
+    "nixexprpath": "hydra-jobsets.nix",
+    "checkinterval": 300,
+    "schedulingshares": 100,
+    "enableemail": false,
+    "emailoverride": "",
+    "keepnr": 10,
+    "inputs": {
+        "src": { "type": "git", "value": "https://github.com/danieldk/sticker-python.git hydra-test", "emailresponsible": false },
+        "nixpkgs": { "type": "git", "value": "https://github.com/NixOS/nixpkgs.git release-19.03", "emailresponsible": false }
+    }
+}

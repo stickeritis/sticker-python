@@ -1,0 +1,3 @@
+{
+  jobsets = import ./release.nix;
+}
