@@ -1,56 +1,71 @@
 {
   callPackage
-, lib
+, stdenv
 
+, defaultCrateOverrides
 , nix-gitignore
-, pkgconfig
-, pyo3-pack
-, python3Packages
 
-, python3
-, libtensorflow
-, openssl
+, curl
+, python3Packages
+, pkgconfig
 
 , releaseBuild ? true
 }:
 
 let
   libtensorflow_1_14_0 = (callPackage ./nix/danieldk.nix {}).libtensorflow_1_14_0;
-  rustPlatform = callPackage ./nix/rust-nightly.nix {};
-in rustPlatform.buildRustPackage rec {
-  pname = "sticker";
-  version = "0.1.0";
+  rustNightly = callPackage ./nix/rust-nightly.nix {};
+in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
+  release = releaseBuild;
+  rust = rustNightly;
 
-  src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
-  cargoSha256 = "1i1fwi744s2adp27vnc1h7nz3w8knyjchly55m599wkpqv81a1q9";
+  crateOverrides = defaultCrateOverrides // {
+    sticker-python = attr: rec {
+      pname = "sticker-python";
+      name = "${pname}-${attr.version}";
 
-  nativeBuildInputs = [ pkgconfig pyo3-pack ];
+      src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
 
-  buildInputs = [ libtensorflow_1_14_0 openssl python3 ];
+      installCheckInputs = [ python3Packages.pytest ];
 
-  installCheckInputs = [ python3Packages.pytest ];
+      doInstallCheck = true;
 
-  doInstallCheck = true;
+      installPhase = let
+        sitePackages = python3Packages.python.sitePackages;
+        sharedLibrary = stdenv.hostPlatform.extensions.sharedLibrary;
+      in ''
+        mkdir -p "$out/${sitePackages}"
+        cp target/lib/libsticker-*${sharedLibrary} \
+          "$out/${sitePackages}/sticker.so"
+        export PYTHONPATH="$out/${sitePackages}:$PYTHONPATH"
+      '';
 
-  buildPhase = let
-    releaseArg = lib.optionalString releaseBuild "--release";
-  in ''
-    pyo3-pack build ${releaseArg} --manylinux off
-  '';
+      installCheckPhase = ''
+        cargo fmt --all -- --check
+        pytest
+      '';
 
-  installPhase = ''
-    mkdir -p "$out/${python3.sitePackages}"
-    export PYTHONPATH="$out/${python3.sitePackages}:$PYTHONPATH"
-    ${python3.pythonForBuild.pkgs.bootstrapped-pip}/bin/pip install \
-        target/wheels/*.whl --no-index --prefix=$out --no-cache --build tmpbuild
-  '';
+      meta = with stdenv.lib; {
+        description = "Python module for the sticker sequence labeler";
+        license = licenses.asl20;
+        platforms = platforms.all;
+      };
+    };
 
-  checkPhase = ''
-    cargo fmt --all -- --check
-    cargo clippy
-  '';
+    sticker-utils = attr: {
+      # We only care for the library part of sticker-utils.
+      crateBin = [];
+    };
 
-  installCheckPhase = ''
-    pytest
-  '';
+    pyo3 = attr: {
+      buildInputs = [ python3Packages.python ];
+    };
+
+    tensorflow-sys = attrs: {
+      nativeBuildInputs = [ pkgconfig ];
+
+      buildInputs = [ libtensorflow_1_14_0 ] ++
+        stdenv.lib.optional stdenv.isDarwin curl;
+    };
+  };
 }

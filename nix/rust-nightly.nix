@@ -8,12 +8,4 @@ let
     sha256 = "18h0nvh55b5an4gmlgfbvwbyqj91bklf1zymis6lbdh75571qaz0";
   };
   mozilla = callPackage "${mozillaOverlay.out}/package-set.nix" {};
-  rustNightly = (mozilla.rustChannelOf { date = "2019-02-07"; channel = "nightly"; }).rust;
-  rustPlatform = makeRustPlatform {
-    cargo = rustNightly;
-    rustc = rustNightly;
-  };
-in makeRustPlatform {
-  cargo = rustNightly;
-  rustc = rustNightly;
-}
+in (mozilla.rustChannelOf { date = "2019-02-07"; channel = "nightly"; }).rust
