@@ -999,8 +999,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "sticker"
-version = "0.5.0"
-source = "git+https://github.com/danieldk/sticker.git?rev=0.5.0#4c33e3dc5ed685733f66867e85ab2a12f68fee6e"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "conllx 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1013,8 +1013,8 @@ dependencies = [
  "protobuf 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.95 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.95 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sticker-tf-proto 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tensorflow 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "tf-proto 0.1.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)",
 ]
 
 [[package]]
@@ -1023,13 +1023,21 @@ version = "0.1.0"
 dependencies = [
  "conllx 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "pyo3 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sticker-utils 0.5.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)",
+ "sticker-utils 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "sticker-tf-proto"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "protobuf 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "sticker-utils"
-version = "0.5.0"
-source = "git+https://github.com/danieldk/sticker.git?rev=0.5.0#4c33e3dc5ed685733f66867e85ab2a12f68fee6e"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "conllx 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1041,7 +1049,7 @@ dependencies = [
  "serde_cbor 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.95 (registry+https://github.com/rust-lang/crates.io-index)",
  "stdinout 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sticker 0.5.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)",
+ "sticker 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "tensorflow 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "threadpool 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "toml 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1124,14 +1132,6 @@ version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "unicode-width 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "tf-proto"
-version = "0.1.0"
-source = "git+https://github.com/danieldk/sticker.git?rev=0.5.0#4c33e3dc5ed685733f66867e85ab2a12f68fee6e"
-dependencies = [
- "protobuf 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1348,8 +1348,9 @@ dependencies = [
 "checksum socket2 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "4e626972d3593207547f14bf5fc9efa4d0e7283deb73fef1dff313dae9ab8878"
 "checksum spin 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "44363f6f51401c34e7be73db0db371c04705d35efbe9f7d6082e03a921a32c55"
 "checksum stdinout 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "29f1026ef7b2ded56453d708809e15f148b7f5b6a51e1ee0237964881ab85680"
-"checksum sticker 0.5.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)" = "<none>"
-"checksum sticker-utils 0.5.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)" = "<none>"
+"checksum sticker 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b7780360b75d53bd346692a826a34b8f6ee7aeb5fc4e80ed631ac3d3f8cb7b9a"
+"checksum sticker-tf-proto 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "47d47269aac6c74f23ea940f550dcd0de1796508c0abfff7808f9062721f9793"
+"checksum sticker-utils 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "9d5d039598b7346493a84d60cd1da5c29bb435131067bb9a626856ce6c2c1aae"
 "checksum strsim 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
 "checksum syn 0.15.39 (registry+https://github.com/rust-lang/crates.io-index)" = "b4d960b829a55e56db167e861ddb43602c003c7be0bee1d345021703fac2fb7c"
 "checksum synstructure 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)" = "02353edf96d6e4dc81aea2d8490a7e9db177bf8acb0e951c24940bf866cb313f"
@@ -1358,7 +1359,6 @@ dependencies = [
 "checksum tensorflow-sys 0.16.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f45e5e974e61ac7efaeb52f63d5a596cce8f2197ddde9788fcc35aca40f2ccc5"
 "checksum termios 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "72b620c5ea021d75a735c943269bb07d30c9b77d6ac6b236bc8b5c496ef05625"
 "checksum textwrap 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
-"checksum tf-proto 0.1.0 (git+https://github.com/danieldk/sticker.git?rev=0.5.0)" = "<none>"
 "checksum thread_local 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "c6b53e329000edc2b34dbe8545fd20e55a333362d0a321909685a19bd28c3f1b"
 "checksum threadpool 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e2f0c90a5f3459330ac8bc0d2f879c693bb7a2f59689c1083fc4ef83834da865"
 "checksum toml 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b8c96d7873fa7ef8bdeb3a9cda3ac48389b4154f32b9803b4bc26220b677b039"

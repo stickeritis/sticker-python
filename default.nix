@@ -22,7 +22,7 @@ in rustPlatform.buildRustPackage rec {
   version = "0.1.0";
 
   src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
-  cargoSha256 = "1kiqbi64s8bzlyaiq2mk2642zsff7h0cr1yjf5drhizmi1fdvw5y";
+  cargoSha256 = "1i1fwi744s2adp27vnc1h7nz3w8knyjchly55m599wkpqv81a1q9";
 
   nativeBuildInputs = [ pkgconfig pyo3-pack ];
 
