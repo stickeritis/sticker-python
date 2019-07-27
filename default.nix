@@ -6,6 +6,7 @@
 , nix-gitignore
 
 , curl
+, darwin
 , python3Packages
 , pkgconfig
 
@@ -25,6 +26,8 @@ in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
       name = "${pname}-${attr.version}";
 
       src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
+
+      buildInputs = stdenv.lib.optional stdenv.isDarwin darwin.Security;
 
       installCheckInputs = [ python3Packages.pytest ];
 
