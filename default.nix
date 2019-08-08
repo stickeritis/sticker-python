@@ -37,15 +37,23 @@ in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
         sitePackages = python3Packages.python.sitePackages;
         sharedLibrary = stdenv.hostPlatform.extensions.sharedLibrary;
       in ''
+        runHook preInstall
+
         mkdir -p "$out/${sitePackages}"
         cp target/lib/libsticker-*${sharedLibrary} \
           "$out/${sitePackages}/sticker.so"
         export PYTHONPATH="$out/${sitePackages}:$PYTHONPATH"
+
+        runHook postInstall
       '';
 
       installCheckPhase = ''
+        runHook preInstallCheck
+
         cargo fmt --all -- --check
         pytest
+
+        runHook postInstallCheck
       '';
 
       meta = with stdenv.lib; {
