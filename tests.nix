@@ -9,7 +9,7 @@
 
 let
   sticker-python = callPackage ./default.nix { inherit releaseBuild; };
-  de-pos-ud = (callPackage ./nix/danieldk.nix {}).stickerModels.de-pos-ud;
+  de-pos-ud = (callPackage ./nix/danieldk.nix {}).stickerModels.de-pos-ud.model;
 in runCommand "test-tagger" {
   nativeBuildInputs = [ python3Packages.pytest sticker-python ];
 } ''

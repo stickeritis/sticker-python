@@ -1,6 +1,6 @@
 { callPackage }:
 
 callPackage (builtins.fetchTarball {
-  url = "https://git.sr.ht/~danieldk/nix-packages/archive/25911247666aff6b5951b0665ce4e9c152d56d84.tar.gz";
-  sha256 = "0vj4x0wmk5akvv2d6ibnalpsz3s06vmi1z9a8qwhla4f9jnfr52w";
+  url = "https://git.sr.ht/~danieldk/nix-packages/archive/c4a277bc5afaecbf982c3fa19cd7bac68de1826f.tar.gz";
+  sha256 = "1n070qjp31fc94z5s1lglihlk7pnq14xdrvizjah9mfrwgaaa0p0";
 }) {}
