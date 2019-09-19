@@ -346,7 +346,7 @@ rec {
   deps.proc_macro2."0.4.30" = {
     unicode_xid = "0.1.0";
   };
-  deps.protobuf."2.7.0" = {};
+  deps.protobuf."2.8.0" = {};
   deps.pyo3."0.7.0" = {
     inventory = "0.1.3";
     libc = "0.2.60";
@@ -489,7 +489,7 @@ rec {
   };
   deps.spin."0.5.0" = {};
   deps.stdinout."0.4.0" = {};
-  deps.sticker."0.5.1" = {
+  deps.sticker."0.6.0" = {
     conllx = "0.11.2";
     failure = "0.1.5";
     finalfusion = "0.7.1";
@@ -498,21 +498,21 @@ rec {
     ndarray_tensorflow = "0.2.0";
     ordered_float = "1.0.2";
     petgraph = "0.4.13";
-    protobuf = "2.7.0";
+    protobuf = "2.8.0";
     serde = "1.0.95";
     serde_derive = "1.0.95";
-    sticker_tf_proto = "0.1.0";
+    sticker_tf_proto = "0.6.0";
     tensorflow = "0.13.0";
   };
   deps.sticker_python."0.1.0" = {
     conllx = "0.11.2";
     pyo3 = "0.7.0";
-    sticker_utils = "0.5.1";
+    sticker_utils = "0.6.0";
   };
-  deps.sticker_tf_proto."0.1.0" = {
-    protobuf = "2.7.0";
+  deps.sticker_tf_proto."0.6.0" = {
+    protobuf = "2.8.0";
   };
-  deps.sticker_utils."0.5.1" = {
+  deps.sticker_utils."0.6.0" = {
     clap = "2.33.0";
     conllx = "0.11.2";
     failure = "0.1.5";
@@ -523,7 +523,7 @@ rec {
     serde_cbor = "0.10.1";
     serde_derive = "1.0.95";
     stdinout = "0.4.0";
-    sticker = "0.5.1";
+    sticker = "0.6.0";
     tensorflow = "0.13.0";
     threadpool = "1.7.1";
     toml = "0.5.1";

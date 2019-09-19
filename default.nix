@@ -50,7 +50,6 @@ in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
       installCheckPhase = ''
         runHook preInstallCheck
 
-        cargo fmt --all -- --check
         pytest
 
         runHook postInstallCheck
