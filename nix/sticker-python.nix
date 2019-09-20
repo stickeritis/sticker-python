@@ -46,12 +46,12 @@ rec {
   sticker_python = crates.crates.sticker_python."0.1.0" deps;
   __all = [ (sticker_python {}) ];
   deps.adler32."1.0.3" = {};
-  deps.aho_corasick."0.7.4" = {
+  deps.aho_corasick."0.7.6" = {
     memchr = "2.2.1";
   };
   deps.aligned_alloc."0.1.3" = {
     kernel32_sys = "0.2.2";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.2.8";
   };
   deps.ansi_term."0.11.0" = {
@@ -61,18 +61,18 @@ rec {
     nodrop = "0.1.13";
   };
   deps.atty."0.2.13" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.autocfg."0.1.5" = {};
   deps.backtrace."0.3.32" = {
     backtrace_sys = "0.1.30";
     cfg_if = "0.1.9";
-    libc = "0.2.60";
+    libc = "0.2.62";
     rustc_demangle = "0.1.15";
   };
   deps.backtrace_sys."0.1.30" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     cc = "1.0.37";
   };
   deps.bitflags."1.1.0" = {};
@@ -91,7 +91,7 @@ rec {
   };
   deps.clicolors_control."1.0.0" = {
     lazy_static = "1.3.0";
-    libc = "0.2.60";
+    libc = "0.2.62";
     atty = "0.2.13";
     winapi = "0.3.7";
   };
@@ -108,9 +108,9 @@ rec {
     atty = "0.2.13";
     clicolors_control = "1.0.0";
     lazy_static = "1.3.0";
-    libc = "0.2.60";
+    libc = "0.2.62";
     parking_lot = "0.9.0";
-    regex = "1.1.9";
+    regex = "1.3.1";
     unicode_width = "0.1.5";
     termios = "0.3.1";
     encode_unicode = "0.3.5";
@@ -147,7 +147,7 @@ rec {
   };
   deps.curl."0.4.22" = {
     curl_sys = "0.4.20";
-    libc = "0.2.60";
+    libc = "0.2.62";
     socket2 = "0.3.9";
     openssl_probe = "0.1.2";
     openssl_sys = "0.9.47";
@@ -156,7 +156,7 @@ rec {
     winapi = "0.2.8";
   };
   deps.curl_sys."0.4.20" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     libz_sys = "1.0.25";
     cc = "1.0.37";
     pkg_config = "0.3.14";
@@ -178,7 +178,7 @@ rec {
   deps.filetime."0.2.6" = {
     cfg_if = "0.1.9";
     redox_syscall = "0.1.56";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.finalfusion."0.7.1" = {
@@ -197,7 +197,7 @@ rec {
   deps.fixedbitset."0.1.9" = {};
   deps.flate2."1.0.9" = {
     crc32fast = "1.2.0";
-    libc = "0.2.60";
+    libc = "0.2.62";
     miniz_sys = "0.1.12";
     miniz_oxide_c_api = "0.2.2";
   };
@@ -214,17 +214,28 @@ rec {
     lazy_static = "1.3.0";
     number_prefix = "0.2.8";
     parking_lot = "0.9.0";
-    regex = "1.1.9";
+    regex = "1.3.1";
   };
-  deps.inventory."0.1.3" = {
+  deps.indoc."0.3.4" = {
+    indoc_impl = "0.3.4";
+    proc_macro_hack = "0.5.9";
+  };
+  deps.indoc_impl."0.3.4" = {
+    proc_macro_hack = "0.5.9";
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    syn = "1.0.5";
+    unindent = "0.1.4";
+  };
+  deps.inventory."0.1.4" = {
     ctor = "0.1.9";
     ghost = "0.1.0";
-    inventory_impl = "0.1.3";
+    inventory_impl = "0.1.4";
   };
-  deps.inventory_impl."0.1.3" = {
-    proc_macro2 = "0.4.30";
-    quote = "0.6.13";
-    syn = "0.15.39";
+  deps.inventory_impl."0.1.4" = {
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    syn = "1.0.5";
   };
   deps.itertools."0.7.11" = {
     either = "1.5.2";
@@ -232,15 +243,16 @@ rec {
   deps.itertools."0.8.0" = {
     either = "1.5.2";
   };
+  deps.itoa."0.4.4" = {};
   deps.kernel32_sys."0.2.2" = {
     winapi = "0.2.8";
     winapi_build = "0.1.1";
   };
   deps.lazy_init."0.3.0" = {};
   deps.lazy_static."1.3.0" = {};
-  deps.libc."0.2.60" = {};
+  deps.libc."0.2.62" = {};
   deps.libz_sys."1.0.25" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     cc = "1.0.37";
     pkg_config = "0.3.14";
   };
@@ -250,25 +262,17 @@ rec {
   deps.log."0.4.7" = {
     cfg_if = "0.1.9";
   };
-  deps.mashup."0.1.9" = {
-    mashup_impl = "0.1.9";
-    proc_macro_hack = "0.4.2";
-  };
-  deps.mashup_impl."0.1.9" = {
-    proc_macro_hack = "0.4.2";
-    proc_macro2 = "0.4.30";
-  };
   deps.matrixmultiply."0.1.15" = {
     rawpointer = "0.1.0";
   };
   deps.memchr."2.2.1" = {};
   deps.memmap."0.7.0" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.memoffset."0.2.1" = {};
   deps.miniz_sys."0.1.12" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     cc = "1.0.37";
   };
   deps.miniz_oxide."0.2.2" = {
@@ -276,7 +280,7 @@ rec {
   };
   deps.miniz_oxide_c_api."0.2.2" = {
     crc32fast = "1.2.0";
-    libc = "0.2.60";
+    libc = "0.2.62";
     miniz_oxide = "0.2.2";
     cc = "1.0.37";
   };
@@ -303,21 +307,21 @@ rec {
     autocfg = "0.1.5";
   };
   deps.num_cpus."1.10.1" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
   };
   deps.number_prefix."0.2.8" = {
     num_traits = "0.2.8";
   };
   deps.openssl_probe."0.1.2" = {};
   deps.openssl_sys."0.9.47" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     autocfg = "0.1.5";
     cc = "1.0.37";
     pkg_config = "0.3.14";
   };
   deps.ordered_float."1.0.2" = {
     num_traits = "0.2.8";
-    serde = "1.0.95";
+    serde = "1.0.101";
   };
   deps.ordermap."0.3.5" = {};
   deps.parking_lot."0.9.0" = {
@@ -331,45 +335,66 @@ rec {
     rustc_version = "0.2.3";
     cloudabi = "0.0.3";
     redox_syscall = "0.1.56";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
+  };
+  deps.paste."0.1.6" = {
+    paste_impl = "0.1.6";
+    proc_macro_hack = "0.5.9";
+  };
+  deps.paste_impl."0.1.6" = {
+    proc_macro_hack = "0.5.9";
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    syn = "1.0.5";
   };
   deps.petgraph."0.4.13" = {
     fixedbitset = "0.1.9";
     ordermap = "0.3.5";
   };
   deps.pkg_config."0.3.14" = {};
-  deps.proc_macro_hack."0.4.2" = {
-    proc_macro_hack_impl = "0.4.2";
+  deps.proc_macro_hack."0.5.9" = {
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    syn = "1.0.5";
   };
-  deps.proc_macro_hack_impl."0.4.2" = {};
   deps.proc_macro2."0.4.30" = {
     unicode_xid = "0.1.0";
   };
+  deps.proc_macro2."1.0.3" = {
+    unicode_xid = "0.2.0";
+  };
   deps.protobuf."2.8.0" = {};
-  deps.pyo3."0.7.0" = {
-    inventory = "0.1.3";
-    libc = "0.2.60";
-    mashup = "0.1.9";
+  deps.pyo3."0.8.0" = {
+    indoc = "0.3.4";
+    inventory = "0.1.4";
+    libc = "0.2.62";
     num_traits = "0.2.8";
-    pyo3cls = "0.7.0";
-    spin = "0.5.0";
-    regex = "1.1.9";
-    version_check = "0.1.5";
+    paste = "0.1.6";
+    pyo3cls = "0.8.0";
+    spin = "0.5.2";
+    unindent = "0.1.4";
+    regex = "1.3.1";
+    serde = "1.0.101";
+    serde_json = "1.0.40";
+    version_check = "0.9.1";
   };
-  deps.pyo3_derive_backend."0.7.0" = {
-    proc_macro2 = "0.4.30";
-    quote = "0.6.13";
-    syn = "0.15.39";
+  deps.pyo3_derive_backend."0.8.0" = {
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    syn = "1.0.5";
   };
-  deps.pyo3cls."0.7.0" = {
-    proc_macro2 = "0.4.30";
-    pyo3_derive_backend = "0.7.0";
-    quote = "0.6.13";
-    syn = "0.15.39";
+  deps.pyo3cls."0.8.0" = {
+    proc_macro2 = "1.0.3";
+    pyo3_derive_backend = "0.8.0";
+    quote = "1.0.2";
+    syn = "1.0.5";
   };
   deps.quote."0.6.13" = {
     proc_macro2 = "0.4.30";
+  };
+  deps.quote."1.0.2" = {
+    proc_macro2 = "1.0.3";
   };
   deps.rand."0.6.5" = {
     rand_chacha = "0.1.1";
@@ -381,7 +406,7 @@ rec {
     rand_pcg = "0.1.2";
     rand_xorshift = "0.1.1";
     autocfg = "0.1.5";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.rand_chacha."0.1.1" = {
@@ -400,7 +425,7 @@ rec {
   };
   deps.rand_jitter."0.1.4" = {
     rand_core = "0.4.0";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.rand_os."0.1.3" = {
@@ -408,7 +433,7 @@ rec {
     rdrand = "0.4.0";
     cloudabi = "0.0.3";
     fuchsia_cprng = "0.1.1";
-    libc = "0.2.60";
+    libc = "0.2.62";
     winapi = "0.3.7";
   };
   deps.rand_pcg."0.1.2" = {
@@ -445,20 +470,18 @@ rec {
     rand_xorshift = "0.1.1";
     rayon = "1.1.0";
   };
-  deps.regex."1.1.9" = {
-    aho_corasick = "0.7.4";
+  deps.regex."1.3.1" = {
+    aho_corasick = "0.7.6";
     memchr = "2.2.1";
-    regex_syntax = "0.6.8";
+    regex_syntax = "0.6.12";
     thread_local = "0.3.6";
-    utf8_ranges = "1.0.3";
   };
-  deps.regex_syntax."0.6.8" = {
-    ucd_util = "0.1.3";
-  };
+  deps.regex_syntax."0.6.12" = {};
   deps.rustc_demangle."0.1.15" = {};
   deps.rustc_version."0.2.3" = {
     semver = "0.9.0";
   };
+  deps.ryu."1.0.0" = {};
   deps.schannel."0.1.15" = {
     lazy_static = "1.3.0";
     winapi = "0.3.7";
@@ -469,25 +492,32 @@ rec {
     semver_parser = "0.7.0";
   };
   deps.semver_parser."0.7.0" = {};
-  deps.serde."1.0.95" = {};
+  deps.serde."1.0.101" = {
+    serde_derive = "1.0.95";
+  };
   deps.serde_cbor."0.10.1" = {
     byteorder = "1.3.2";
     half = "1.3.0";
-    serde = "1.0.95";
+    serde = "1.0.101";
   };
   deps.serde_derive."1.0.95" = {
     proc_macro2 = "0.4.30";
     quote = "0.6.13";
     syn = "0.15.39";
   };
+  deps.serde_json."1.0.40" = {
+    itoa = "0.4.4";
+    ryu = "1.0.0";
+    serde = "1.0.101";
+  };
   deps.smallvec."0.6.10" = {};
   deps.socket2."0.3.9" = {
     cfg_if = "0.1.9";
-    libc = "0.2.60";
+    libc = "0.2.62";
     redox_syscall = "0.1.56";
     winapi = "0.3.7";
   };
-  deps.spin."0.5.0" = {};
+  deps.spin."0.5.2" = {};
   deps.stdinout."0.4.0" = {};
   deps.sticker."0.6.0" = {
     conllx = "0.11.2";
@@ -499,14 +529,14 @@ rec {
     ordered_float = "1.0.2";
     petgraph = "0.4.13";
     protobuf = "2.8.0";
-    serde = "1.0.95";
+    serde = "1.0.101";
     serde_derive = "1.0.95";
     sticker_tf_proto = "0.6.0";
     tensorflow = "0.13.0";
   };
   deps.sticker_python."0.1.0" = {
     conllx = "0.11.2";
-    pyo3 = "0.7.0";
+    pyo3 = "0.8.0";
     sticker_utils = "0.6.0";
   };
   deps.sticker_tf_proto."0.6.0" = {
@@ -519,7 +549,7 @@ rec {
     finalfusion = "0.7.1";
     indicatif = "0.11.0";
     ordered_float = "1.0.2";
-    serde = "1.0.95";
+    serde = "1.0.101";
     serde_cbor = "0.10.1";
     serde_derive = "1.0.95";
     stdinout = "0.4.0";
@@ -534,6 +564,11 @@ rec {
     quote = "0.6.13";
     unicode_xid = "0.1.0";
   };
+  deps.syn."1.0.5" = {
+    proc_macro2 = "1.0.3";
+    quote = "1.0.2";
+    unicode_xid = "0.2.0";
+  };
   deps.synstructure."0.10.2" = {
     proc_macro2 = "0.4.30";
     quote = "0.6.13";
@@ -543,19 +578,19 @@ rec {
   deps.tar."0.4.26" = {
     filetime = "0.2.6";
     redox_syscall = "0.1.56";
-    libc = "0.2.60";
+    libc = "0.2.62";
     xattr = "0.2.2";
   };
   deps.tensorflow."0.13.0" = {
     aligned_alloc = "0.1.3";
     byteorder = "1.3.2";
     crc = "1.8.1";
-    libc = "0.2.60";
+    libc = "0.2.62";
     num_complex = "0.2.3";
     tensorflow_sys = "0.16.0";
   };
   deps.tensorflow_sys."0.16.0" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
     curl = "0.4.22";
     flate2 = "1.0.9";
     pkg_config = "0.3.14";
@@ -563,7 +598,7 @@ rec {
     tar = "0.4.26";
   };
   deps.termios."0.3.1" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
   };
   deps.textwrap."0.11.0" = {
     unicode_width = "0.1.5";
@@ -575,15 +610,15 @@ rec {
     num_cpus = "1.10.1";
   };
   deps.toml."0.5.1" = {
-    serde = "1.0.95";
+    serde = "1.0.101";
   };
-  deps.ucd_util."0.1.3" = {};
   deps.unicode_width."0.1.5" = {};
   deps.unicode_xid."0.1.0" = {};
-  deps.utf8_ranges."1.0.3" = {};
+  deps.unicode_xid."0.2.0" = {};
+  deps.unindent."0.1.4" = {};
   deps.vcpkg."0.2.7" = {};
   deps.vec_map."0.8.1" = {};
-  deps.version_check."0.1.5" = {};
+  deps.version_check."0.9.1" = {};
   deps.winapi."0.2.8" = {};
   deps.winapi."0.3.7" = {
     winapi_i686_pc_windows_gnu = "0.4.0";
@@ -593,6 +628,6 @@ rec {
   deps.winapi_i686_pc_windows_gnu."0.4.0" = {};
   deps.winapi_x86_64_pc_windows_gnu."0.4.0" = {};
   deps.xattr."0.2.2" = {
-    libc = "0.2.60";
+    libc = "0.2.62";
   };
 }
