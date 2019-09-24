@@ -78,6 +78,10 @@ rec {
   deps.bitflags."1.1.0" = {};
   deps.build_const."0.2.1" = {};
   deps.byteorder."1.3.2" = {};
+  deps.c2_chacha."0.2.2" = {
+    lazy_static = "1.3.0";
+    ppv_lite86 = "0.2.5";
+  };
   deps.cc."1.0.37" = {};
   deps.cfg_if."0.1.9" = {};
   deps.clap."2.33.0" = {
@@ -181,17 +185,17 @@ rec {
     libc = "0.2.62";
     winapi = "0.3.7";
   };
-  deps.finalfusion."0.7.1" = {
+  deps.finalfusion."0.10.1" = {
     byteorder = "1.3.2";
-    failure = "0.1.5";
     fnv = "1.0.6";
     itertools = "0.8.0";
     memmap = "0.7.0";
     ndarray = "0.12.1";
     ordered_float = "1.0.2";
-    rand = "0.6.5";
-    rand_xorshift = "0.1.1";
-    reductive = "0.2.0";
+    rand = "0.7.2";
+    rand_xorshift = "0.2.0";
+    reductive = "0.3.0";
+    serde = "1.0.101";
     toml = "0.5.1";
   };
   deps.fixedbitset."0.1.9" = {};
@@ -202,7 +206,11 @@ rec {
     miniz_oxide_c_api = "0.2.2";
   };
   deps.fnv."1.0.6" = {};
-  deps.fuchsia_cprng."0.1.1" = {};
+  deps.getrandom."0.1.12" = {
+    cfg_if = "0.1.9";
+    libc = "0.2.62";
+    wasi = "0.7.0";
+  };
   deps.ghost."0.1.0" = {
     proc_macro2 = "0.4.30";
     quote = "0.6.13";
@@ -353,6 +361,7 @@ rec {
     ordermap = "0.3.5";
   };
   deps.pkg_config."0.3.14" = {};
+  deps.ppv_lite86."0.2.5" = {};
   deps.proc_macro_hack."0.5.9" = {
     proc_macro2 = "1.0.3";
     quote = "1.0.2";
@@ -396,52 +405,29 @@ rec {
   deps.quote."1.0.2" = {
     proc_macro2 = "1.0.3";
   };
-  deps.rand."0.6.5" = {
-    rand_chacha = "0.1.1";
-    rand_core = "0.4.0";
-    rand_hc = "0.1.0";
-    rand_isaac = "0.1.1";
-    rand_jitter = "0.1.4";
-    rand_os = "0.1.3";
-    rand_pcg = "0.1.2";
-    rand_xorshift = "0.1.1";
-    autocfg = "0.1.5";
+  deps.rand."0.7.2" = {
+    rand_core = "0.5.1";
+    rand_pcg = "0.2.0";
+    rand_chacha = "0.2.1";
+    rand_hc = "0.2.0";
     libc = "0.2.62";
-    winapi = "0.3.7";
   };
-  deps.rand_chacha."0.1.1" = {
-    rand_core = "0.3.1";
-    autocfg = "0.1.5";
+  deps.rand_chacha."0.2.1" = {
+    c2_chacha = "0.2.2";
+    rand_core = "0.5.1";
   };
-  deps.rand_core."0.3.1" = {
-    rand_core = "0.4.0";
+  deps.rand_core."0.5.1" = {
+    getrandom = "0.1.12";
   };
-  deps.rand_core."0.4.0" = {};
-  deps.rand_hc."0.1.0" = {
-    rand_core = "0.3.1";
+  deps.rand_hc."0.2.0" = {
+    rand_core = "0.5.1";
   };
-  deps.rand_isaac."0.1.1" = {
-    rand_core = "0.3.1";
-  };
-  deps.rand_jitter."0.1.4" = {
-    rand_core = "0.4.0";
-    libc = "0.2.62";
-    winapi = "0.3.7";
-  };
-  deps.rand_os."0.1.3" = {
-    rand_core = "0.4.0";
-    rdrand = "0.4.0";
-    cloudabi = "0.0.3";
-    fuchsia_cprng = "0.1.1";
-    libc = "0.2.62";
-    winapi = "0.3.7";
-  };
-  deps.rand_pcg."0.1.2" = {
-    rand_core = "0.4.0";
+  deps.rand_pcg."0.2.0" = {
+    rand_core = "0.5.1";
     autocfg = "0.1.5";
   };
-  deps.rand_xorshift."0.1.1" = {
-    rand_core = "0.3.1";
+  deps.rand_xorshift."0.2.0" = {
+    rand_core = "0.5.1";
   };
   deps.rawpointer."0.1.0" = {};
   deps.rayon."1.1.0" = {
@@ -456,18 +442,16 @@ rec {
     lazy_static = "1.3.0";
     num_cpus = "1.10.1";
   };
-  deps.rdrand."0.4.0" = {
-    rand_core = "0.3.1";
-  };
   deps.redox_syscall."0.1.56" = {};
-  deps.reductive."0.2.0" = {
+  deps.reductive."0.3.0" = {
     log = "0.4.7";
     ndarray = "0.12.1";
     ndarray_parallel = "0.9.0";
     num_traits = "0.2.8";
     ordered_float = "1.0.2";
-    rand = "0.6.5";
-    rand_xorshift = "0.1.1";
+    rand = "0.7.2";
+    rand_core = "0.5.1";
+    rand_xorshift = "0.2.0";
     rayon = "1.1.0";
   };
   deps.regex."1.3.1" = {
@@ -519,10 +503,10 @@ rec {
   };
   deps.spin."0.5.2" = {};
   deps.stdinout."0.4.0" = {};
-  deps.sticker."0.6.0" = {
+  deps.sticker."0.7.0" = {
     conllx = "0.11.2";
     failure = "0.1.5";
-    finalfusion = "0.7.1";
+    finalfusion = "0.10.1";
     itertools = "0.8.0";
     ndarray = "0.12.1";
     ndarray_tensorflow = "0.2.0";
@@ -531,29 +515,29 @@ rec {
     protobuf = "2.8.0";
     serde = "1.0.101";
     serde_derive = "1.0.95";
-    sticker_tf_proto = "0.6.0";
+    sticker_tf_proto = "0.7.0";
     tensorflow = "0.13.0";
   };
   deps.sticker_python."0.1.0" = {
     conllx = "0.11.2";
     pyo3 = "0.8.0";
-    sticker_utils = "0.6.0";
+    sticker_utils = "0.7.0";
   };
-  deps.sticker_tf_proto."0.6.0" = {
+  deps.sticker_tf_proto."0.7.0" = {
     protobuf = "2.8.0";
   };
-  deps.sticker_utils."0.6.0" = {
+  deps.sticker_utils."0.7.0" = {
     clap = "2.33.0";
     conllx = "0.11.2";
     failure = "0.1.5";
-    finalfusion = "0.7.1";
+    finalfusion = "0.10.1";
     indicatif = "0.11.0";
     ordered_float = "1.0.2";
     serde = "1.0.101";
     serde_cbor = "0.10.1";
     serde_derive = "1.0.95";
     stdinout = "0.4.0";
-    sticker = "0.6.0";
+    sticker = "0.7.0";
     tensorflow = "0.13.0";
     threadpool = "1.7.1";
     toml = "0.5.1";
@@ -619,6 +603,7 @@ rec {
   deps.vcpkg."0.2.7" = {};
   deps.vec_map."0.8.1" = {};
   deps.version_check."0.9.1" = {};
+  deps.wasi."0.7.0" = {};
   deps.winapi."0.2.8" = {};
   deps.winapi."0.3.7" = {
     winapi_i686_pc_windows_gnu = "0.4.0";
