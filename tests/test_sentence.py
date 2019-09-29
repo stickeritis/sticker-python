@@ -1,6 +1,27 @@
 import pytest
 from sticker import Sentence
 
+def test_features():
+    sent = Sentence(["Der", "Hund", "lauft"])
+    sent[1].features["number"] = "1"
+    sent[1].features["gender"] = "masc"
+
+    assert sent[1].features.contains("number")
+    assert not sent[1].features.contains("missing")
+
+    assert sent[1].features["number"] == "1"
+    assert sent[1].features["gender"] == "masc"
+
+
+def test_feature_delete():
+    sent = Sentence(["Der", "Hund", "lauft"])
+    sent[1].features["number"] = "1"
+    assert sent[1].features["number"] == "1"
+
+    del(sent[1].features["number"])
+    with pytest.raises(KeyError):
+        sent[1].features["number"]
+
 
 def test_form_type():
     with pytest.raises(TypeError):
