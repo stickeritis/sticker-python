@@ -4,10 +4,15 @@ def test_tag_sentence(tagger_model):
     sent = Sentence("Chandrayaan-2 ist eine Mondsonde .".split(" "))
     tagger_model.tag_sentence(sent)
 
-    # Fixme: after Sentence supports iteration.
-    assert sent[0].pos is None
-    assert sent[1].pos == "PROPN-NE"
-    assert sent[2].pos == "AUX-VAFIN"
-    assert sent[3].pos == "DET-ART"
-    assert sent[4].pos == "NOUN-NN"
-    assert sent[5].pos == "PUNCT-$."
+    assert list(map(lambda t: t.pos, sent)) == \
+        [None, "PROPN-NE", "AUX-VAFIN", "DET-ART", "NOUN-NN", "PUNCT-$."]
+
+def test_tag_sentence_pipeline(pipeline_model):
+    sent = Sentence("Chandrayaan-2 ist eine Mondsonde .".split(" "))
+    pipeline_model.tag_sentence(sent)
+
+    assert list(map(lambda t: t.pos, sent)) == \
+        [None, "PROPN-NE", "AUX-VAFIN", "DET-ART", "NOUN-NN", "PUNCT-$."]
+
+    assert list(map(lambda t: t.features["tf"], filter(lambda t: t.form != None, sent) )) == \
+        ["VF", "LK", "MF", "MF", "UNK"]
