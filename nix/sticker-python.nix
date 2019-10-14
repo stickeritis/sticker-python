@@ -501,7 +501,7 @@ rec {
   };
   deps.spin."0.5.2" = {};
   deps.stdinout."0.4.0" = {};
-  deps.sticker."0.8.0" = {
+  deps.sticker."0.9.0" = {
     conllx = "0.12.1";
     failure = "0.1.5";
     finalfusion = "0.10.1";
@@ -519,12 +519,12 @@ rec {
   deps.sticker_python."0.1.0" = {
     conllx = "0.12.1";
     pyo3 = "0.8.0";
-    sticker_utils = "0.8.0";
+    sticker_utils = "0.9.0";
   };
   deps.sticker_tf_proto."0.7.0" = {
     protobuf = "2.8.0";
   };
-  deps.sticker_utils."0.8.0" = {
+  deps.sticker_utils."0.9.0" = {
     clap = "2.33.0";
     conllx = "0.12.1";
     failure = "0.1.5";
@@ -535,7 +535,7 @@ rec {
     serde_cbor = "0.10.1";
     serde_derive = "1.0.95";
     stdinout = "0.4.0";
-    sticker = "0.8.0";
+    sticker = "0.9.0";
     tensorflow = "0.13.0";
     threadpool = "1.7.1";
     toml = "0.5.1";

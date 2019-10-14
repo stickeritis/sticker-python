@@ -18,31 +18,24 @@ def test_labeler(tests_root):
     config = Config(os.path.join(tests_root, "sticker.conf"))
 
     assert config.labeler.labels.endswith("sticker.labels")
-    assert config.labeler.read_ahead == 10
 
     config.labeler.labels = "another.labels"
-    config.labeler.read_ahead = 10
-
     assert config.labeler.labels == "another.labels"
-    assert config.labeler.read_ahead == 10
 
 
 def test_model(tests_root):
     config = Config(os.path.join(tests_root, "sticker.conf"))
 
-    assert config.model.batch_size == 256
     assert config.model.graph.endswith("sticker.graph")
     assert config.model.intra_op_parallelism_threads == 2
     assert config.model.inter_op_parallelism_threads == 4
     assert config.model.parameters.endswith("epoch-37")
 
-    config.model.batch_size = 128
     config.model.graph = "another.graph"
     config.model.intra_op_parallelism_threads = 1
     config.model.inter_op_parallelism_threads = 3
     config.model.parameters = "epoch-42"
 
-    assert config.model.batch_size == 128
     assert config.model.graph == "another.graph"
     assert config.model.intra_op_parallelism_threads == 1
     assert config.model.inter_op_parallelism_threads == 3

@@ -4185,60 +4185,60 @@ rec {
 
 
 # end
-# sticker-0.8.0
+# sticker-0.9.0
 
-  crates.sticker."0.8.0" = deps: { features?(features_.sticker."0.8.0" deps {}) }: buildRustCrate {
+  crates.sticker."0.9.0" = deps: { features?(features_.sticker."0.9.0" deps {}) }: buildRustCrate {
     crateName = "sticker";
-    version = "0.8.0";
+    version = "0.9.0";
     description = "Neural sequence labeler";
     authors = [ "Daniël de Kok <me@danieldk.eu>" ];
     edition = "2018";
-    sha256 = "1gxpiv3shd84wb7pjd1ffybjirq1qs6hv15c41zmbs5dxgmgqayp";
+    sha256 = "0v8315jb65iyjal72q5wjyjb1a57gy283n65b23151ja0w264ch0";
     dependencies = mapFeatures features ([
-      (crates."conllx"."${deps."sticker"."0.8.0"."conllx"}" deps)
-      (crates."failure"."${deps."sticker"."0.8.0"."failure"}" deps)
-      (crates."finalfusion"."${deps."sticker"."0.8.0"."finalfusion"}" deps)
-      (crates."itertools"."${deps."sticker"."0.8.0"."itertools"}" deps)
-      (crates."ndarray"."${deps."sticker"."0.8.0"."ndarray"}" deps)
-      (crates."ndarray_tensorflow"."${deps."sticker"."0.8.0"."ndarray_tensorflow"}" deps)
-      (crates."ordered_float"."${deps."sticker"."0.8.0"."ordered_float"}" deps)
-      (crates."petgraph"."${deps."sticker"."0.8.0"."petgraph"}" deps)
-      (crates."protobuf"."${deps."sticker"."0.8.0"."protobuf"}" deps)
-      (crates."serde"."${deps."sticker"."0.8.0"."serde"}" deps)
-      (crates."serde_derive"."${deps."sticker"."0.8.0"."serde_derive"}" deps)
-      (crates."sticker_tf_proto"."${deps."sticker"."0.8.0"."sticker_tf_proto"}" deps)
-      (crates."tensorflow"."${deps."sticker"."0.8.0"."tensorflow"}" deps)
+      (crates."conllx"."${deps."sticker"."0.9.0"."conllx"}" deps)
+      (crates."failure"."${deps."sticker"."0.9.0"."failure"}" deps)
+      (crates."finalfusion"."${deps."sticker"."0.9.0"."finalfusion"}" deps)
+      (crates."itertools"."${deps."sticker"."0.9.0"."itertools"}" deps)
+      (crates."ndarray"."${deps."sticker"."0.9.0"."ndarray"}" deps)
+      (crates."ndarray_tensorflow"."${deps."sticker"."0.9.0"."ndarray_tensorflow"}" deps)
+      (crates."ordered_float"."${deps."sticker"."0.9.0"."ordered_float"}" deps)
+      (crates."petgraph"."${deps."sticker"."0.9.0"."petgraph"}" deps)
+      (crates."protobuf"."${deps."sticker"."0.9.0"."protobuf"}" deps)
+      (crates."serde"."${deps."sticker"."0.9.0"."serde"}" deps)
+      (crates."serde_derive"."${deps."sticker"."0.9.0"."serde_derive"}" deps)
+      (crates."sticker_tf_proto"."${deps."sticker"."0.9.0"."sticker_tf_proto"}" deps)
+      (crates."tensorflow"."${deps."sticker"."0.9.0"."tensorflow"}" deps)
     ]);
   };
-  features_.sticker."0.8.0" = deps: f: updateFeatures f (rec {
-    conllx."${deps.sticker."0.8.0".conllx}".default = true;
-    failure."${deps.sticker."0.8.0".failure}".default = true;
-    finalfusion."${deps.sticker."0.8.0".finalfusion}".default = true;
-    itertools."${deps.sticker."0.8.0".itertools}".default = true;
-    ndarray."${deps.sticker."0.8.0".ndarray}".default = true;
-    ndarray_tensorflow."${deps.sticker."0.8.0".ndarray_tensorflow}".default = true;
-    ordered_float."${deps.sticker."0.8.0".ordered_float}".default = true;
-    petgraph."${deps.sticker."0.8.0".petgraph}".default = true;
-    protobuf."${deps.sticker."0.8.0".protobuf}".default = true;
-    serde."${deps.sticker."0.8.0".serde}".default = true;
-    serde_derive."${deps.sticker."0.8.0".serde_derive}".default = true;
-    sticker."0.8.0".default = (f.sticker."0.8.0".default or true);
-    sticker_tf_proto."${deps.sticker."0.8.0".sticker_tf_proto}".default = true;
-    tensorflow."${deps.sticker."0.8.0".tensorflow}".default = true;
+  features_.sticker."0.9.0" = deps: f: updateFeatures f (rec {
+    conllx."${deps.sticker."0.9.0".conllx}".default = true;
+    failure."${deps.sticker."0.9.0".failure}".default = true;
+    finalfusion."${deps.sticker."0.9.0".finalfusion}".default = true;
+    itertools."${deps.sticker."0.9.0".itertools}".default = true;
+    ndarray."${deps.sticker."0.9.0".ndarray}".default = true;
+    ndarray_tensorflow."${deps.sticker."0.9.0".ndarray_tensorflow}".default = true;
+    ordered_float."${deps.sticker."0.9.0".ordered_float}".default = true;
+    petgraph."${deps.sticker."0.9.0".petgraph}".default = true;
+    protobuf."${deps.sticker."0.9.0".protobuf}".default = true;
+    serde."${deps.sticker."0.9.0".serde}".default = true;
+    serde_derive."${deps.sticker."0.9.0".serde_derive}".default = true;
+    sticker."0.9.0".default = (f.sticker."0.9.0".default or true);
+    sticker_tf_proto."${deps.sticker."0.9.0".sticker_tf_proto}".default = true;
+    tensorflow."${deps.sticker."0.9.0".tensorflow}".default = true;
   }) [
-    (features_.conllx."${deps."sticker"."0.8.0"."conllx"}" deps)
-    (features_.failure."${deps."sticker"."0.8.0"."failure"}" deps)
-    (features_.finalfusion."${deps."sticker"."0.8.0"."finalfusion"}" deps)
-    (features_.itertools."${deps."sticker"."0.8.0"."itertools"}" deps)
-    (features_.ndarray."${deps."sticker"."0.8.0"."ndarray"}" deps)
-    (features_.ndarray_tensorflow."${deps."sticker"."0.8.0"."ndarray_tensorflow"}" deps)
-    (features_.ordered_float."${deps."sticker"."0.8.0"."ordered_float"}" deps)
-    (features_.petgraph."${deps."sticker"."0.8.0"."petgraph"}" deps)
-    (features_.protobuf."${deps."sticker"."0.8.0"."protobuf"}" deps)
-    (features_.serde."${deps."sticker"."0.8.0"."serde"}" deps)
-    (features_.serde_derive."${deps."sticker"."0.8.0"."serde_derive"}" deps)
-    (features_.sticker_tf_proto."${deps."sticker"."0.8.0"."sticker_tf_proto"}" deps)
-    (features_.tensorflow."${deps."sticker"."0.8.0"."tensorflow"}" deps)
+    (features_.conllx."${deps."sticker"."0.9.0"."conllx"}" deps)
+    (features_.failure."${deps."sticker"."0.9.0"."failure"}" deps)
+    (features_.finalfusion."${deps."sticker"."0.9.0"."finalfusion"}" deps)
+    (features_.itertools."${deps."sticker"."0.9.0"."itertools"}" deps)
+    (features_.ndarray."${deps."sticker"."0.9.0"."ndarray"}" deps)
+    (features_.ndarray_tensorflow."${deps."sticker"."0.9.0"."ndarray_tensorflow"}" deps)
+    (features_.ordered_float."${deps."sticker"."0.9.0"."ordered_float"}" deps)
+    (features_.petgraph."${deps."sticker"."0.9.0"."petgraph"}" deps)
+    (features_.protobuf."${deps."sticker"."0.9.0"."protobuf"}" deps)
+    (features_.serde."${deps."sticker"."0.9.0"."serde"}" deps)
+    (features_.serde_derive."${deps."sticker"."0.9.0"."serde_derive"}" deps)
+    (features_.sticker_tf_proto."${deps."sticker"."0.9.0"."sticker_tf_proto"}" deps)
+    (features_.tensorflow."${deps."sticker"."0.9.0"."tensorflow"}" deps)
   ];
 
 
@@ -4275,66 +4275,66 @@ rec {
 
 
 # end
-# sticker-utils-0.8.0
+# sticker-utils-0.9.0
 
-  crates.sticker_utils."0.8.0" = deps: { features?(features_.sticker_utils."0.8.0" deps {}) }: buildRustCrate {
+  crates.sticker_utils."0.9.0" = deps: { features?(features_.sticker_utils."0.9.0" deps {}) }: buildRustCrate {
     crateName = "sticker-utils";
-    version = "0.8.0";
+    version = "0.9.0";
     description = "Neural sequence labeler (utilities)";
     authors = [ "Daniël de Kok <me@danieldk.eu>" ];
     edition = "2018";
-    sha256 = "0w1042zh0xxn3pxnw3z3cj8r0df7c8c708g2ab4817zh4hknyk7s";
+    sha256 = "1ms431a04lldi113s67n24af8f57yi4cqcm3f1rv030k9qyw8s1s";
     dependencies = mapFeatures features ([
-      (crates."clap"."${deps."sticker_utils"."0.8.0"."clap"}" deps)
-      (crates."conllx"."${deps."sticker_utils"."0.8.0"."conllx"}" deps)
-      (crates."failure"."${deps."sticker_utils"."0.8.0"."failure"}" deps)
-      (crates."finalfusion"."${deps."sticker_utils"."0.8.0"."finalfusion"}" deps)
-      (crates."indicatif"."${deps."sticker_utils"."0.8.0"."indicatif"}" deps)
-      (crates."ordered_float"."${deps."sticker_utils"."0.8.0"."ordered_float"}" deps)
-      (crates."serde"."${deps."sticker_utils"."0.8.0"."serde"}" deps)
-      (crates."serde_cbor"."${deps."sticker_utils"."0.8.0"."serde_cbor"}" deps)
-      (crates."serde_derive"."${deps."sticker_utils"."0.8.0"."serde_derive"}" deps)
-      (crates."stdinout"."${deps."sticker_utils"."0.8.0"."stdinout"}" deps)
-      (crates."sticker"."${deps."sticker_utils"."0.8.0"."sticker"}" deps)
-      (crates."tensorflow"."${deps."sticker_utils"."0.8.0"."tensorflow"}" deps)
-      (crates."threadpool"."${deps."sticker_utils"."0.8.0"."threadpool"}" deps)
-      (crates."toml"."${deps."sticker_utils"."0.8.0"."toml"}" deps)
+      (crates."clap"."${deps."sticker_utils"."0.9.0"."clap"}" deps)
+      (crates."conllx"."${deps."sticker_utils"."0.9.0"."conllx"}" deps)
+      (crates."failure"."${deps."sticker_utils"."0.9.0"."failure"}" deps)
+      (crates."finalfusion"."${deps."sticker_utils"."0.9.0"."finalfusion"}" deps)
+      (crates."indicatif"."${deps."sticker_utils"."0.9.0"."indicatif"}" deps)
+      (crates."ordered_float"."${deps."sticker_utils"."0.9.0"."ordered_float"}" deps)
+      (crates."serde"."${deps."sticker_utils"."0.9.0"."serde"}" deps)
+      (crates."serde_cbor"."${deps."sticker_utils"."0.9.0"."serde_cbor"}" deps)
+      (crates."serde_derive"."${deps."sticker_utils"."0.9.0"."serde_derive"}" deps)
+      (crates."stdinout"."${deps."sticker_utils"."0.9.0"."stdinout"}" deps)
+      (crates."sticker"."${deps."sticker_utils"."0.9.0"."sticker"}" deps)
+      (crates."tensorflow"."${deps."sticker_utils"."0.9.0"."tensorflow"}" deps)
+      (crates."threadpool"."${deps."sticker_utils"."0.9.0"."threadpool"}" deps)
+      (crates."toml"."${deps."sticker_utils"."0.9.0"."toml"}" deps)
     ]);
   };
-  features_.sticker_utils."0.8.0" = deps: f: updateFeatures f (rec {
-    clap."${deps.sticker_utils."0.8.0".clap}".default = true;
-    conllx."${deps.sticker_utils."0.8.0".conllx}".default = true;
-    failure."${deps.sticker_utils."0.8.0".failure}".default = true;
-    finalfusion."${deps.sticker_utils."0.8.0".finalfusion}".default = true;
-    indicatif."${deps.sticker_utils."0.8.0".indicatif}".default = true;
+  features_.sticker_utils."0.9.0" = deps: f: updateFeatures f (rec {
+    clap."${deps.sticker_utils."0.9.0".clap}".default = true;
+    conllx."${deps.sticker_utils."0.9.0".conllx}".default = true;
+    failure."${deps.sticker_utils."0.9.0".failure}".default = true;
+    finalfusion."${deps.sticker_utils."0.9.0".finalfusion}".default = true;
+    indicatif."${deps.sticker_utils."0.9.0".indicatif}".default = true;
     ordered_float = fold recursiveUpdate {} [
-      { "${deps.sticker_utils."0.8.0".ordered_float}"."serde" = true; }
-      { "${deps.sticker_utils."0.8.0".ordered_float}".default = true; }
+      { "${deps.sticker_utils."0.9.0".ordered_float}"."serde" = true; }
+      { "${deps.sticker_utils."0.9.0".ordered_float}".default = true; }
     ];
-    serde."${deps.sticker_utils."0.8.0".serde}".default = true;
-    serde_cbor."${deps.sticker_utils."0.8.0".serde_cbor}".default = true;
-    serde_derive."${deps.sticker_utils."0.8.0".serde_derive}".default = true;
-    stdinout."${deps.sticker_utils."0.8.0".stdinout}".default = true;
-    sticker."${deps.sticker_utils."0.8.0".sticker}".default = true;
-    sticker_utils."0.8.0".default = (f.sticker_utils."0.8.0".default or true);
-    tensorflow."${deps.sticker_utils."0.8.0".tensorflow}".default = true;
-    threadpool."${deps.sticker_utils."0.8.0".threadpool}".default = true;
-    toml."${deps.sticker_utils."0.8.0".toml}".default = true;
+    serde."${deps.sticker_utils."0.9.0".serde}".default = true;
+    serde_cbor."${deps.sticker_utils."0.9.0".serde_cbor}".default = true;
+    serde_derive."${deps.sticker_utils."0.9.0".serde_derive}".default = true;
+    stdinout."${deps.sticker_utils."0.9.0".stdinout}".default = true;
+    sticker."${deps.sticker_utils."0.9.0".sticker}".default = true;
+    sticker_utils."0.9.0".default = (f.sticker_utils."0.9.0".default or true);
+    tensorflow."${deps.sticker_utils."0.9.0".tensorflow}".default = true;
+    threadpool."${deps.sticker_utils."0.9.0".threadpool}".default = true;
+    toml."${deps.sticker_utils."0.9.0".toml}".default = true;
   }) [
-    (features_.clap."${deps."sticker_utils"."0.8.0"."clap"}" deps)
-    (features_.conllx."${deps."sticker_utils"."0.8.0"."conllx"}" deps)
-    (features_.failure."${deps."sticker_utils"."0.8.0"."failure"}" deps)
-    (features_.finalfusion."${deps."sticker_utils"."0.8.0"."finalfusion"}" deps)
-    (features_.indicatif."${deps."sticker_utils"."0.8.0"."indicatif"}" deps)
-    (features_.ordered_float."${deps."sticker_utils"."0.8.0"."ordered_float"}" deps)
-    (features_.serde."${deps."sticker_utils"."0.8.0"."serde"}" deps)
-    (features_.serde_cbor."${deps."sticker_utils"."0.8.0"."serde_cbor"}" deps)
-    (features_.serde_derive."${deps."sticker_utils"."0.8.0"."serde_derive"}" deps)
-    (features_.stdinout."${deps."sticker_utils"."0.8.0"."stdinout"}" deps)
-    (features_.sticker."${deps."sticker_utils"."0.8.0"."sticker"}" deps)
-    (features_.tensorflow."${deps."sticker_utils"."0.8.0"."tensorflow"}" deps)
-    (features_.threadpool."${deps."sticker_utils"."0.8.0"."threadpool"}" deps)
-    (features_.toml."${deps."sticker_utils"."0.8.0"."toml"}" deps)
+    (features_.clap."${deps."sticker_utils"."0.9.0"."clap"}" deps)
+    (features_.conllx."${deps."sticker_utils"."0.9.0"."conllx"}" deps)
+    (features_.failure."${deps."sticker_utils"."0.9.0"."failure"}" deps)
+    (features_.finalfusion."${deps."sticker_utils"."0.9.0"."finalfusion"}" deps)
+    (features_.indicatif."${deps."sticker_utils"."0.9.0"."indicatif"}" deps)
+    (features_.ordered_float."${deps."sticker_utils"."0.9.0"."ordered_float"}" deps)
+    (features_.serde."${deps."sticker_utils"."0.9.0"."serde"}" deps)
+    (features_.serde_cbor."${deps."sticker_utils"."0.9.0"."serde_cbor"}" deps)
+    (features_.serde_derive."${deps."sticker_utils"."0.9.0"."serde_derive"}" deps)
+    (features_.stdinout."${deps."sticker_utils"."0.9.0"."stdinout"}" deps)
+    (features_.sticker."${deps."sticker_utils"."0.9.0"."sticker"}" deps)
+    (features_.tensorflow."${deps."sticker_utils"."0.9.0"."tensorflow"}" deps)
+    (features_.threadpool."${deps."sticker_utils"."0.9.0"."threadpool"}" deps)
+    (features_.toml."${deps."sticker_utils"."0.9.0"."toml"}" deps)
   ];
 
 
