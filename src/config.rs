@@ -75,11 +75,6 @@ pub struct PyModel {
 #[pymethods]
 impl PyModel {
     #[getter]
-    fn get_batch_size(&self) -> usize {
-        self.config.borrow().model.batch_size
-    }
-
-    #[getter]
     fn get_graph(&self) -> String {
         self.config.borrow().model.graph.to_owned()
     }
@@ -97,11 +92,6 @@ impl PyModel {
     #[getter]
     fn get_parameters(&self) -> String {
         self.config.borrow().model.parameters.to_owned()
-    }
-
-    #[setter]
-    fn set_batch_size(&self, batch_size: usize) {
-        self.config.borrow_mut().model.batch_size = batch_size
     }
 
     #[setter]
@@ -144,19 +134,9 @@ impl PyLabeler {
         self.config.borrow().labeler.labels.clone()
     }
 
-    #[getter]
-    fn get_read_ahead(&self) -> usize {
-        self.config.borrow().labeler.read_ahead
-    }
-
     #[setter]
     fn set_labels(&self, labels: &str) {
         self.config.borrow_mut().labeler.labels = labels.to_owned()
-    }
-
-    #[setter]
-    fn set_read_ahead(&self, read_ahead: usize) {
-        self.config.borrow_mut().labeler.read_ahead = read_ahead
     }
 }
 

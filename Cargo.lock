@@ -1023,7 +1023,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "sticker"
-version = "0.8.0"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "conllx 0.12.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1047,7 +1047,7 @@ version = "0.1.0"
 dependencies = [
  "conllx 0.12.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "pyo3 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sticker-utils 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sticker-utils 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1060,7 +1060,7 @@ dependencies = [
 
 [[package]]
 name = "sticker-utils"
-version = "0.8.0"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1073,7 +1073,7 @@ dependencies = [
  "serde_cbor 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.95 (registry+https://github.com/rust-lang/crates.io-index)",
  "stdinout 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sticker 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sticker 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tensorflow 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "threadpool 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "toml 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1389,9 +1389,9 @@ dependencies = [
 "checksum socket2 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "4e626972d3593207547f14bf5fc9efa4d0e7283deb73fef1dff313dae9ab8878"
 "checksum spin 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 "checksum stdinout 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "29f1026ef7b2ded56453d708809e15f148b7f5b6a51e1ee0237964881ab85680"
-"checksum sticker 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e18bce2159cf213c47c03b6d0527b10cfdce6116c64cc2b61135209390bf7fa1"
+"checksum sticker 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "71fd9c3060c8e5717169ff48d6e36a526a3d4e3763727d172f06d403c6d53a2b"
 "checksum sticker-tf-proto 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "64e002d1798ea5285f75456aa0dc731d4b331dd2b53a9a873a781540483b1081"
-"checksum sticker-utils 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "79d5ee7d945963a83a317e448ce7f30d45867ee98174c9eff916642fc810f155"
+"checksum sticker-utils 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d7c294e50af16329a58618d4c43840fc591bfaf5997a6ebe5d32d94c21e13420"
 "checksum strsim 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
 "checksum syn 0.15.39 (registry+https://github.com/rust-lang/crates.io-index)" = "b4d960b829a55e56db167e861ddb43602c003c7be0bee1d345021703fac2fb7c"
 "checksum syn 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)" = "66850e97125af79138385e9b88339cbcd037e3f28ceab8c5ad98e64f0f1f80bf"

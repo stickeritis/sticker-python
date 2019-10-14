@@ -14,7 +14,7 @@
 }:
 
 let
-  libtensorflow_1_14_0 = (callPackage ./nix/danieldk.nix {}).libtensorflow_1_14_0;
+  libtensorflow_1_14_0 = (callPackage ./nix/sticker.nix {}).libtensorflow_1_14_0;
   rustNightly = callPackage ./nix/rust-nightly.nix {};
 in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
   release = releaseBuild;
