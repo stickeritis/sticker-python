@@ -16,18 +16,21 @@
 let
   libtensorflow_1_14_0 = (callPackage ./nix/sticker.nix {}).libtensorflow_1_14_0;
   rustNightly = callPackage ./nix/rust-nightly.nix {};
-in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
-  release = releaseBuild;
+  cargo_nix = callPackage ./nix/Cargo.nix {};
+in cargo_nix.rootCrate.build.override {
   rust = rustNightly;
+  release = releaseBuild;
+
+  buildInputs = stdenv.lib.optional stdenv.isDarwin darwin.Security;
 
   crateOverrides = defaultCrateOverrides // {
     sticker-python = attr: rec {
       pname = "sticker-python";
       name = "${pname}-${attr.version}";
 
-      src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
+      type = [ "cdylib" ];
 
-      buildInputs = stdenv.lib.optional stdenv.isDarwin darwin.Security;
+      src = nix-gitignore.gitignoreSource [ ".git/" "*.nix" "/nix" ] ./.;
 
       installCheckInputs = [ python3Packages.pytest ];
 
@@ -40,7 +43,7 @@ in ((callPackage ./nix/sticker-python.nix {}).sticker_python {}).override {
         runHook preInstall
 
         mkdir -p "$out/${sitePackages}"
-        cp target/lib/libsticker-*${sharedLibrary} \
+        cp target/lib/libsticker_python*${sharedLibrary} \
           "$out/${sitePackages}/sticker.so"
         export PYTHONPATH="$out/${sitePackages}:$PYTHONPATH"
 
