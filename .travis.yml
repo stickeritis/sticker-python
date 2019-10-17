@@ -15,6 +15,6 @@ before_script:
 - if [ -n "$CACHIX_SIGNING_KEY" ]; then cachix push danieldk-ci --watch-store; fi
   &
 script:
-- nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/31a6c5a7b507847221598b0d14dd41e935afea4e.tar.gz
+- nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/c35f7161aae554cfe40fa3db57ee7df684b72951.tar.gz
   --expr 'with import <nixpkgs> {}; callPackage ./default.nix { releaseBuild = false; }'
 - sleep 10 # Allow cachix to finish
