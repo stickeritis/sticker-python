@@ -132,4 +132,30 @@ impl PyTagger {
             .tag_sentences(&mut sents)
             .map_err(|err| exceptions::RuntimeError::py_err(err.to_string()))
     }
+
+    /// Get the top-k tags for each token in the given sentence.
+    fn top_k_sentence(&self, sentence: &PySentence) -> PyResult<Vec<Vec<(String, f32)>>> {
+        Ok(self.top_k_sentences(vec![sentence])?.remove(0))
+    }
+
+    /// Get the top-k tags for each token in the given sentences.
+    fn top_k_sentences(
+        &self,
+        sentences: Vec<&PySentence>,
+    ) -> PyResult<Vec<Vec<Vec<(String, f32)>>>> {
+        // We need borrowed_sents to exist as long as sents, since the
+        // lifetimes of sentences are bound to RefMut returned by
+        // PySentence::inner.
+        let borrowed_sents = sentences
+            .into_iter()
+            .map(|sent| sent.inner())
+            .collect::<Vec<_>>();
+        let sents = borrowed_sents
+            .iter()
+            .map(|sent| &**sent)
+            .collect::<Vec<_>>();
+        self.inner
+            .top_k(&sents)
+            .map_err(|err| exceptions::RuntimeError::py_err(err.to_string()))
+    }
 }
