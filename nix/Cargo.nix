@@ -19,12 +19,12 @@ rec {
   #
 
   rootCrate = {
-    packageId = "sticker-python 0.1.0 (path+file:///home/daniel/git/sticker-python)";
+    packageId = "sticker-python 0.2.0 (path+file:///home/daniel/git/sticker-python)";
 
     # Use this attribute to refer to the derivation building your root crate package.
     # You can override the features with rootCrate.build.override { features = [ "default" "feature1" ... ]; }.
     build = buildRustCrateWithFeatures {
-      packageId = "sticker-python 0.1.0 (path+file:///home/daniel/git/sticker-python)";
+      packageId = "sticker-python 0.2.0 (path+file:///home/daniel/git/sticker-python)";
       features = rootFeatures;
     };
   };
@@ -35,9 +35,9 @@ rec {
   # workspaceMembers."${crateName}".build.override { features = [ "default" "feature1" ... ]; }.
   workspaceMembers = {
     "sticker-python" = {
-      packageId = "sticker-python 0.1.0 (path+file:///home/daniel/git/sticker-python)";
+      packageId = "sticker-python 0.2.0 (path+file:///home/daniel/git/sticker-python)";
       build = buildRustCrateWithFeatures {
-        packageId = "sticker-python 0.1.0 (path+file:///home/daniel/git/sticker-python)";
+        packageId = "sticker-python 0.2.0 (path+file:///home/daniel/git/sticker-python)";
         features = rootFeatures;
       };
     };
@@ -2126,10 +2126,10 @@ rec {
         features = {
         };
       };
-    "sticker-python 0.1.0 (path+file:///home/daniel/git/sticker-python)"
+    "sticker-python 0.2.0 (path+file:///home/daniel/git/sticker-python)"
       = rec {
         crateName = "sticker-python";
-        version = "0.1.0";
+        version = "0.2.0";
         edition = "2018";
         src = (builtins.filterSource sourceFilter ./.);
         authors = [
