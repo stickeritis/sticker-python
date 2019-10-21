@@ -1,7 +1,7 @@
 use pyo3::exceptions;
 use pyo3::prelude::*;
 
-use sticker_utils::{Pipeline, TaggerWrapper};
+use sticker::wrapper::{Pipeline, Tagger};
 
 use crate::PyConfig;
 use crate::PySentence;
@@ -20,7 +20,7 @@ impl PyPipeline {
             .iter()
             .map(|config| config.as_ref().clone())
             .collect::<Vec<_>>();
-        let pipeline = Pipeline::new_from_configs(configs.as_slice())
+        let pipeline = Pipeline::from_configs(configs.as_slice())
             .map_err(|err| exceptions::IOError::py_err(err.to_string()))?;
 
         obj.init(PyPipeline { inner: pipeline });
@@ -77,14 +77,14 @@ impl PyPipeline {
 /// from a configuration.
 #[pyclass(name=Tagger)]
 pub struct PyTagger {
-    inner: TaggerWrapper,
+    inner: Tagger,
 }
 
 #[pymethods]
 impl PyTagger {
     #[new]
     fn __new__(obj: &PyRawObject, config: &PyConfig) -> PyResult<()> {
-        let tagger = TaggerWrapper::new(&*config.as_ref())
+        let tagger = Tagger::new(&*config.as_ref())
             .map_err(|err| exceptions::IOError::py_err(err.to_string()))?;
 
         obj.init(PyTagger { inner: tagger });
