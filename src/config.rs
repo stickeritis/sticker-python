@@ -7,7 +7,7 @@ use pyo3::class::basic::PyObjectProtocol;
 use pyo3::exceptions;
 use pyo3::prelude::*;
 
-use sticker_utils::{Config, TomlRead};
+use sticker::wrapper::{Config, TomlRead};
 
 /// Config(file)
 /// --

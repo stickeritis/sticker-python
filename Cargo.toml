@@ -16,4 +16,4 @@ features = ["extension-module"]
 
 [dependencies]
 conllx = "0.12"
-sticker-utils = "0.9"
+sticker = "0.10"
